@@ -1,0 +1,227 @@
+.sh_click{
+	position: absolute;
+	z-index: 99999999999;
+	width: 100%;
+	height: 70%;
+	background: rgba(255,255,255,.8);
+	display: none;
+}
+.sh_click .shclick_tt .int1{
+	width: 80%;
+	align-items: center;
+	font-size: 0.17rem;
+	padding-bottom: 2%;
+	border-bottom: 1px solid #BBBBBB;
+}
+.sh_click .shclick_tt .sh_img{
+	padding: 3% 0;
+	align-items: center;
+}
+.sh_click .shclick_tt{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	width: 60%;
+	margin: 0 auto;
+	background: #FFFFFF;
+	border: 1px solid #BBBBBB;
+	padding: 0 3%;
+}
+.header{
+	margin: 0;
+	position: fixed;
+	z-index: 99999;
+	max-width: 752px;
+	background: #FFFFFF;
+}
+.header .head{
+	width: 100%;
+	padding: 0 9px;
+	position: relative;
+}
+.header .head img{
+	margin: 0 auto;
+	max-height: 100px;
+}
+.header .head .sh{
+	position: absolute;
+	z-index: 9;
+	right: 7%;
+	top: 27%;
+}
+.main{
+	padding-top: 90px;
+	background: #FFDD67;
+	position: relative;
+}
+.main .banner_bg{
+	margin-right: 7%;
+	margin-left: 7%;
+	margin-top: 5%;
+	position: relative;
+	background: #FFFFFF;
+	border-radius: 15px;
+	padding: 1.5%;
+}
+.main .banner{
+	
+}
+.main .banner .banner_pag{
+	left: 0;
+	right: 0;
+	bottom: 5%;
+}
+.main .banner .banner_pag span{
+	margin-right: 1.5%;
+	background: rgba(255,255,255,.6);
+	opacity: 1;
+}
+.main .banner_bg .banner .banner_pag{
+	bottom: 15px;
+}
+.main .banner_bg .banner .banner_pag.swiper-pagination .swiper-pagination-bullet{
+	width: 13px;
+	height: 13px;
+}
+.main .banner .banner_pag span.swiper-pagination-bullet-active{
+	background: rgba(255,255,255,1);
+	transition: all .4s ease-in-out 0s;
+}
+.main .banner .swiper-wrapper .swiper-slide img{
+	border-radius: 15px;
+}
+.footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	max-width: 750px;
+	z-index: 99999;
+	background: #ebebeb;
+}
+.footer ul li{
+	padding-top: 3%;
+	padding-bottom: 1%;
+}
+.footer ul li .foot{
+	transition: all .4s ease-in-out 0s;
+	padding-top: 32%;
+	background-size: 50px 50px!important;
+}
+@media screen and (max-width: 414px){
+.main{
+	padding-top: 60px;
+	padding-bottom: 22%;
+}
+.main .username{
+	margin-top: -20%!important;
+}
+.main .username .userimg img{
+	height: 150px;
+}
+.footer ul{
+	width: 100%!important;
+}
+.footer ul li .foot{
+	padding-top: 35%;
+	background-size: 40px 40px!important;
+}
+.header .head .sh{
+	transition: all .4s ease-in-out 0s;
+	top: 25%;
+}
+.header .head .sh img{
+	width: 35px;
+	height: 35px;
+}
+.footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 99999;
+	background: #ebebeb;
+}
+}
+@media screen and (max-width: 375px){
+.footer ul li .foot{
+	padding-top: 40%;
+}
+.main{
+	padding-top: 55px;
+}
+.header .head .sh img{
+	width: 30px;
+	height: 30px;
+}
+}
+.footer ul li:nth-child(1) .foot{
+	background: url(../img/ft_1.png) no-repeat center top;
+}
+.footer ul li:nth-child(1) .foot.foot_1{
+	color: #E56239;
+	background: url(../img/ft1_hv.png) no-repeat center top;
+}
+.footer ul li:nth-child(2) .foot{
+	background: url(../img/ft_2.png) no-repeat center top;
+}
+.footer ul li:nth-child(2) .foot.foot_2{
+	color: #E56239;
+	background: url(../img/ft2_hv.png) no-repeat center top;
+}
+.footer ul li:nth-child(3) .foot{
+	background: url(../img/ft_3.png) no-repeat center top;
+}
+.footer ul li:nth-child(3) .foot.foot_3{
+	color: #E56239;
+	background: url(../img/ft3_hv.png) no-repeat center top;
+}
+.footer ul li:nth-child(1):hover .foot{
+	color: #E56239;
+	background: url(../img/ft1_hv.png) no-repeat center top;
+}
+.footer ul li:nth-child(2):hover .foot{
+	color: #E56239;
+	background: url(../img/ft2_hv.png) no-repeat center top;
+}
+.footer ul li:nth-child(3):hover .foot{
+	color: #E56239;
+	background: url(../img/ft3_hv.png) no-repeat center top;
+}
+.footer ul{
+	margin: 0 auto;
+	width: 80%;
+}
+.footer ul li{
+	width: 27%;
+}
+
+/* 上传图片 */
+.upload-ul{ position: relative;  display:flex; *zoom:1; margin-right: -15px; flex-wrap: wrap;}
+.upload-ul li{ position: relative; display: inline-block; width: 29%; padding: 0; border: none; cursor: pointer; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; overflow: hidden; padding: 10px 10px 0 0; box-sizing: border-box;}
+.upload-ul li > div{border: 1px solid transparent; }
+.upload-ul li:nth-child(4).upload-pick{ display: none;}
+.upload-ul .upload-pick > div{ border-color:#BCBCBC; position: relative;}
+.upload-ul .upload-pick > div::before,
+.upload-ul .upload-pick > div::after{ content: ""; position: absolute; left: 50%; top: 50%;}
+.upload-ul .upload-pick > div::before{ width: 40px; height: 3px; background: #E56239; margin: -1px 0 0 -19px;}
+.upload-ul .upload-pick > div::after{ width: 3px; height: 40px; background: #E56239; margin: -18px 0 0 -1px;}
+.upload-ul .upload-pick:hover > div{ border-color: #E56239;}
+.webuploader-container{position: relative; width: 100%; height: 0; padding-bottom: 100%;}
+.webuploader-pick{ position: absolute; width: 100%; height: 100%; }
+.webuploader-container label{position: absolute;left: 0;top: 0;width: 100%;}
+.webuploader-element-invisible{opacity: 0;width: 100%;height: 100%;clip: rect(1px 1px 1px 1px);clip: rect(1px,1px,1px,1px);}
+.viewThumb{position:relative;width: 100%;height: 0%;padding-bottom: 100%;overflow:hidden;border-radius: .3rem;}
+.viewThumb img{width: 100%;height: 100%;position: absolute;}
+.diyBar{ position: absolute; display:none; top: 0;left: 0;width: 100%;height: 100%;background: url(../img/bgblack.png);z-index: 3;}
+.diyProgress{ position: absolute; left: 0;top: 33px;width: 100%;height: 24px;line-height:24px;font-size: 14px;text-align: center;color: #FFF;background:rgba(10,168,241,.7); z-index: 3;}
+.diyControl{ position: absolute; display:flex; left: 0;bottom: 0;width: 100%;height: 24px;line-height:24px;font-size: 14px;background: url(../img/bgblack.png); z-index: 3; }
+.viewThumb .diyControl{ display: flex; align-items: center; justify-content: space-between;}
+.diyControl span{ display: block; width: 100%; background: #E56239; color: #fff; text-align: center;}
+.diyControl span i{ display: block; width: 12px; height: 11px; opacity: .7; }
+.diyControl span i:hover{ opacity: 1; cursor: pointer; }
+.diyLeft{ margin-left: 3px; }
+.diyLeft{ margin-right: 3px; }
+.diyLeft i{ margin-left: 3px; background: url(../img/upload-icon1.png) no-repeat 0 0; }
+.diyCancel i{ background: url(../img/upload-icon1.png) no-repeat 0 -11px; }
+.diyRight i{ margin-right: 3px; background: url(../img/upload-icon1.png) no-repeat 0 -22px; }
+.goods-edit .upload-tip{ font: 12px/23px "Microsoft YaHei"; color: #a3a3a3;vertical-align: top; }

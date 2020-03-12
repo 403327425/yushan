@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:28 +0800] "GET /vote/voteIndex?activityId=38 HTTP/1.1" 200 14389 http-bio-80-exec-2 4067
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:28 +0800] "GET /vote/voteIndex?activityId=38 HTTP/1.1" 200 14389 http-bio-80-exec-1 4396
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:29 +0800] "GET /js/swiper.min.js.map HTTP/1.1" 404 949 http-bio-80-exec-5 38
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:29 +0800] "GET /image/favicon.ico HTTP/1.1" 200 6719 http-bio-80-exec-9 32
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:29 +0800] "POST /vote/getAllVoteCount HTTP/1.1" 200 2 http-bio-80-exec-8 292
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:30 +0800] "POST /vote/getAllActivityById HTTP/1.1" 200 256 http-bio-80-exec-4 437
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:09:30 +0800] "POST /vote/getAllCandidateByActivityId HTTP/1.1" 200 1071 http-bio-80-exec-7 428
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:08 +0800] "GET /vote/voteIndex?activityId=38 HTTP/1.1" 200 14389 http-bio-80-exec-5 62
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:08 +0800] "GET /vote/voteIndex?activityId=38 HTTP/1.1" 200 14389 http-bio-80-exec-5 53
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:09 +0800] "GET /js/swiper.min.js.map HTTP/1.1" 404 949 http-bio-80-exec-2 13
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:10 +0800] "POST /vote/getAllActivityById HTTP/1.1" 200 256 http-bio-80-exec-5 30
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:10 +0800] "GET /image/favicon.ico HTTP/1.1" 200 6719 http-bio-80-exec-5 8
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:11 +0800] "POST /vote/getAllVoteCount HTTP/1.1" 200 2 http-bio-80-exec-8 398
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:15:13:11 +0800] "POST /vote/getAllCandidateByActivityId HTTP/1.1" 200 1071 http-bio-80-exec-6 563

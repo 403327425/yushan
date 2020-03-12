@@ -1,0 +1,263 @@
+.main{
+	padding-bottom: 13%;
+}
+.main_a{
+	width: 100%;
+	background: #FFFFFF;
+	border-radius: 40px 40px 0 0;
+	margin: 0 auto;
+	padding: 7% 0 50% 0;
+}
+.main_a .ma_hd{
+	text-align: center;
+}
+.main_a .ma_hd .mahd_l{
+	background: no-repeat center center;
+	width: 73%;
+	border-radius: 10px;
+}
+.main_a .ma_hd .mahd_l p{
+	padding: 5px 0;
+}
+.main_a .ma_hd .mahd_r{
+	background: no-repeat center center;
+	width: 26%;
+}
+.main_a .ma_hd .mahd_r p{
+	padding: 5px 0;
+}
+.main .ma_nav{
+	padding: 2% 0;
+}
+.main .ma_nav ul{
+	text-align: center;
+}
+.main .ma_nav ul li{
+	display: inline-block;
+	font-size: 0.28rem;
+	margin-right: 13%;
+	font-weight: bold;
+}
+.main .ma_nav ul li .lobby{
+	padding-bottom: 1%;
+	border-bottom: 5px solid #EE7C3D;
+}
+.main .ma_nav ul li:last-child{
+	margin-right: 0;
+}
+.main .ma_head{
+	width: 80%;
+	margin: 0 auto;
+	padding: 2% 0;
+}
+.main .ma_head .head_button{
+	width: 25%;
+}
+.main_a .list_head{
+	width: 85%;
+	margin: 0 auto;
+	padding-bottom: 1%;
+	padding-left: 1%;
+}
+.main_a .role{
+	width: 85%;
+	margin: 0 auto;
+}
+.main_a .role_button{
+	width: 60%;
+	margin: 15% auto 0 auto;
+}
+.main_a .role_button button{
+	background: #EE7C3D;
+	color: #FFFFFF;
+	width: 100%;
+	padding: 15px 0;
+	font-size: 0.25rem;
+	border-radius: 15px;
+}
+.main .ma_head .button_hd{
+	background: #EE7C3D;
+	color: #FFFFFF;
+	width: 100%;
+	border-radius: 10px;
+	padding: 10px 0;
+	font-size: 0.18rem;
+}
+.main_a .ma_list ul li{
+	background: #EBEBEB;
+	position: relative;
+	z-index: 9;
+	width: 95%;
+	margin: 0 auto 5% auto;
+}
+.main_a .ma_list1 ul li{
+	background: #FFFFFF;
+	border-bottom: 1px solid #BBBBBB;
+	width: 85%;
+}
+.main_a .ma_list ul li .malist_inbox{
+	padding: 1% 2% 1% 1%;
+}
+.main_a .ma_list ul li .malist_inbox1{
+	padding: 1% 2% 1% 1%;
+}
+.main_a .ma_list ul li .malist_inbox1 .inboxtt_click{
+	width: 70%;
+	margin: 0 auto;
+	display: none;
+}
+.main_a .ma_list ul li .malist_inbox1 .inboxtt_click.on{
+	display: block;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img{
+	width: 15%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img2{
+	width: 32%;
+}
+@media screen and (max-width: 1024px) {
+.main_a .ma_list ul li .malist_inbox .inbox_img{
+	width: 15%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img3{
+	width: 15%!important;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img2{
+	width: 32%;
+}
+}
+@media screen and (max-width: 414px){
+.main_a .ma_list ul li .malist_inbox .inbox_img2{
+	width: 30%!important;
+}
+.main_a .ma_hd .mahd_r{
+	border-radius: 10px;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button .button{
+	padding: 5px 0!important;
+}
+.main_a .ma_list ul li .malist_inbox{
+	padding: 4% 4% 8% 4%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt{
+	position: relative;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button .button_m{
+	position: absolute;
+	width: 50%!important;
+	top: 45%;
+}
+.main_a{
+	padding: 10% 0 50% 0;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button1 .button_already{
+	bottom: -40%!important;
+}
+.main_a .ma_list ul li .malist_inbox1{
+	padding: 2% 4% 2% 2%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button{
+	padding-top: 0!important;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img img{
+	width: 50px!important;
+	height: 50px!important;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img2 img{
+	width: 100px!important;
+	height: 100px!important;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img1 {
+	width: 16%!important;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img{
+	width: 15%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img1{
+	width: 11%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt1{
+	width: 80%!important;
+}
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img img{
+	border-radius: 10px 0 0 10px;
+	max-height: 100%;
+	height: 180px;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_img1 img{
+	border-radius: 100%;
+	height: 68px;
+	width: 68px;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt{
+	width: 66%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt1{
+	width: 85%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt .inboxtt_l{
+	width: 50%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt .inboxtt_l1{
+	width: 36%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt .tt1{
+	width: 50%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_tt .inboxtt_l .tt2{
+	width: 100%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button{
+	padding-top: 8%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button .button_r{
+	width: 47%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button .button{
+	font-size: 0.23rem;
+	background: #EE7C3D;
+	border-radius: 16px;
+	width: 100%;
+	padding: 10px 0;
+	color: #FFFFFF;
+	font-weight: normal;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button1{
+	position: relative;
+	padding-top: initial;
+	width: 25%;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button1 .button_already{
+	position: absolute;
+	z-index: 99;
+	border-radius: 25px;
+	background: #fff;
+	color: #686868;
+	font-size: 0.25rem;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	padding: 10px 0;
+	display: none;
+	height: 50px;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button1 .button_already.on{
+	display: block;
+}
+.main_a .ma_list ul li .malist_inbox .inbox_button1 .button{
+	border-radius: 25px;
+	background: #FFDD67;
+	color: #000;
+}
+.main_a .ma_list ul li .li_tt{
+	position: absolute;
+	top: 1.5%;
+	padding: 0 5% 0 7%;
+	background: #FFFFFF;
+	border-radius: 30px 0 20px 0;
+	color: #E56239;
+}
+@media screen and (max-width: 375px){
+
+}

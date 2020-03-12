@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gezi.hdlw.dao.sys.LwDictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.gezi.hdlw.vo.sys.LwDictionary">
+    <id column="dk_id" jdbcType="INTEGER" property="dkId" />
+    <result column="dictionary_table" jdbcType="VARCHAR" property="dictionaryTable" />
+    <result column="dictionary_colum" jdbcType="VARCHAR" property="dictionaryColum" />
+    <result column="dictionary_value" jdbcType="VARCHAR" property="dictionaryValue" />
+    <result column="dictionary_serial_number" jdbcType="INTEGER" property="dictionarySerialNumber" />
+    <result column="dictionary_status" jdbcType="INTEGER" property="dictionaryStatus" />
+    <result column="dictionary_remarks" jdbcType="VARCHAR" property="dictionaryRemarks" />
+    <result column="d_creation_time" jdbcType="TIMESTAMP" property="dCreationTime" />
+    <result column="d_modification_time" jdbcType="TIMESTAMP" property="dModificationTime" />
+    <result column="d_operator" jdbcType="INTEGER" property="dOperator" />
+    <result column="dictionary_table_name" jdbcType="VARCHAR" property="dictionaryTableName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    dk_id, dictionary_table, dictionary_colum, dictionary_value, dictionary_serial_number, 
+    dictionary_status, dictionary_remarks, d_creation_time, d_modification_time, d_operator
+  </sql>
+  <select id="selectByExample" parameterType="com.gezi.hdlw.example.sys.LwDictionaryExample" resultMap="BaseResultMap">
+    SELECT
+	    lw_dictionary1.dk_id,
+	    lw_dictionary1.dictionary_value,
+	    lw_dictionary1.dictionary_serial_number,
+	    lw_dictionary1.dictionary_status,
+	    lw_dictionary1.dictionary_remarks,
+	    lw_dictionary4.dictionary_type_name1 AS dictionary_table_name,
+	    lw_dictionary4.dictionary_type_name2 AS dictionary_colum
+	FROM
+	    lw_dictionary lw_dictionary1
+	LEFT JOIN (
+		SELECT
+			lw_dictionary2.dictionary_type_name dictionary_type_name1,
+			lw_dictionary2.dictionary_type_value dictionary_type_value1,
+			lw_dictionary3.dictionary_type_name dictionary_type_name2,
+			lw_dictionary3.dictionary_type_value dictionary_type_value2
+		FROM
+			lw_dictionary_type lw_dictionary2
+		INNER JOIN lw_dictionary_type lw_dictionary3 ON lw_dictionary3.dt_parent_id = lw_dictionary2.dtk_id
+		) lw_dictionary4 ON lw_dictionary1.dictionary_table = lw_dictionary4.dictionary_type_value1
+	AND lw_dictionary1.dictionary_colum = lw_dictionary4.dictionary_type_value2
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    order by d_creation_time,dictionary_serial_number DESC
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lw_dictionary
+    where dk_id = #{dkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lw_dictionary
+    where dk_id = #{dkId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gezi.hdlw.example.sys.LwDictionaryExample">
+    delete from lw_dictionary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gezi.hdlw.vo.sys.LwDictionary">
+    insert into lw_dictionary (dk_id, dictionary_table, dictionary_colum, 
+      dictionary_value, dictionary_serial_number, 
+      dictionary_status, dictionary_remarks, d_creation_time, 
+      d_modification_time, d_operator)
+    values (#{dkId,jdbcType=INTEGER}, #{dictionaryTable,jdbcType=VARCHAR}, #{dictionaryColum,jdbcType=VARCHAR}, 
+      #{dictionaryValue,jdbcType=VARCHAR}, #{dictionarySerialNumber,jdbcType=INTEGER}, 
+      #{dictionaryStatus,jdbcType=INTEGER}, #{dictionaryRemarks,jdbcType=VARCHAR}, #{dCreationTime,jdbcType=TIMESTAMP}, 
+      #{dModificationTime,jdbcType=TIMESTAMP}, #{dOperator,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezi.hdlw.vo.sys.LwDictionary">
+    insert into lw_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dkId != null">
+        dk_id,
+      </if>
+      <if test="dictionaryTable != null">
+        dictionary_table,
+      </if>
+      <if test="dictionaryColum != null">
+        dictionary_colum,
+      </if>
+      <if test="dictionaryValue != null">
+        dictionary_value,
+      </if>
+      <if test="dictionarySerialNumber != null">
+        dictionary_serial_number,
+      </if>
+      <if test="dictionaryStatus != null">
+        dictionary_status,
+      </if>
+      <if test="dictionaryRemarks != null">
+        dictionary_remarks,
+      </if>
+      <if test="dCreationTime != null">
+        d_creation_time,
+      </if>
+      <if test="dModificationTime != null">
+        d_modification_time,
+      </if>
+      <if test="dOperator != null">
+        d_operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dkId != null">
+        #{dkId,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryTable != null">
+        #{dictionaryTable,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryColum != null">
+        #{dictionaryColum,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryValue != null">
+        #{dictionaryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionarySerialNumber != null">
+        #{dictionarySerialNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryStatus != null">
+        #{dictionaryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryRemarks != null">
+        #{dictionaryRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreationTime != null">
+        #{dCreationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dModificationTime != null">
+        #{dModificationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dOperator != null">
+        #{dOperator,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gezi.hdlw.example.sys.LwDictionaryExample" resultType="java.lang.Long">
+    select count(*) from lw_dictionary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lw_dictionary
+    <set>
+      <if test="record.dkId != null">
+        dk_id = #{record.dkId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dictionaryTable != null">
+        dictionary_table = #{record.dictionaryTable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictionaryColum != null">
+        dictionary_colum = #{record.dictionaryColum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictionaryValue != null">
+        dictionary_value = #{record.dictionaryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictionarySerialNumber != null">
+        dictionary_serial_number = #{record.dictionarySerialNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.dictionaryStatus != null">
+        dictionary_status = #{record.dictionaryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.dictionaryRemarks != null">
+        dictionary_remarks = #{record.dictionaryRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dCreationTime != null">
+        d_creation_time = #{record.dCreationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dModificationTime != null">
+        d_modification_time = #{record.dModificationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dOperator != null">
+        d_operator = #{record.dOperator,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lw_dictionary
+    set dk_id = #{record.dkId,jdbcType=INTEGER},
+      dictionary_table = #{record.dictionaryTable,jdbcType=VARCHAR},
+      dictionary_colum = #{record.dictionaryColum,jdbcType=VARCHAR},
+      dictionary_value = #{record.dictionaryValue,jdbcType=VARCHAR},
+      dictionary_serial_number = #{record.dictionarySerialNumber,jdbcType=INTEGER},
+      dictionary_status = #{record.dictionaryStatus,jdbcType=INTEGER},
+      dictionary_remarks = #{record.dictionaryRemarks,jdbcType=VARCHAR},
+      d_creation_time = #{record.dCreationTime,jdbcType=TIMESTAMP},
+      d_modification_time = #{record.dModificationTime,jdbcType=TIMESTAMP},
+      d_operator = #{record.dOperator,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezi.hdlw.vo.sys.LwDictionary">
+    update lw_dictionary
+    <set>
+      <if test="dictionaryTable != null">
+        dictionary_table = #{dictionaryTable,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryColum != null">
+        dictionary_colum = #{dictionaryColum,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryValue != null">
+        dictionary_value = #{dictionaryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionarySerialNumber != null">
+        dictionary_serial_number = #{dictionarySerialNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryStatus != null">
+        dictionary_status = #{dictionaryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryRemarks != null">
+        dictionary_remarks = #{dictionaryRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreationTime != null">
+        d_creation_time = #{dCreationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dModificationTime != null">
+        d_modification_time = #{dModificationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dOperator != null">
+        d_operator = #{dOperator,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dk_id = #{dkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezi.hdlw.vo.sys.LwDictionary">
+    update lw_dictionary
+    set dictionary_table = #{dictionaryTable,jdbcType=VARCHAR},
+      dictionary_colum = #{dictionaryColum,jdbcType=VARCHAR},
+      dictionary_value = #{dictionaryValue,jdbcType=VARCHAR},
+      dictionary_serial_number = #{dictionarySerialNumber,jdbcType=INTEGER},
+      dictionary_status = #{dictionaryStatus,jdbcType=INTEGER},
+      dictionary_remarks = #{dictionaryRemarks,jdbcType=VARCHAR},
+      d_creation_time = #{dCreationTime,jdbcType=TIMESTAMP},
+      d_modification_time = #{dModificationTime,jdbcType=TIMESTAMP},
+      d_operator = #{dOperator,jdbcType=INTEGER}
+    where dk_id = #{dkId,jdbcType=INTEGER}
+  </update>
+</mapper>

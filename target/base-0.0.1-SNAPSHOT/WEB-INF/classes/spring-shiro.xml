@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- web.xml 中 shiro 的 filter 对应的 bean -->
+	<!-- Shiro 的 Web 过滤器 -->
+	<bean id="shiroFilter"
+		class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<!-- loginUrl 认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由 formAuthenticationFilter 
+			进行表单认证 -->
+		<property name="loginUrl" value="/WEB-INF/console/login.jsp" />
+		<!-- 通过 unauthorizedUrl 指定没有权限操作时跳转页面 -->
+		<property name="unauthorizedUrl" value="/WEB-INF/console/login.jsp" />
+		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/beforeproject/**=anon
+				/css/**=anon
+				/images/**=anon
+				/front/**=anon
+				/js/**=anon
+				/layui/**=anon
+				/layuiadmin/**=anon
+				/sys/vcode=anon
+				/sys/getMenus=anon
+				/browse/**=anon
+				/userFile/login=anon
+				/sys/login=anon
+				/sys/index=anon
+				/sys/system/roleList=authc
+				/sys/system/adminList=authc
+				/druid/**=anon
+				/account/active=anon
+				/json/**=anon
+				/loginOut=logout
+				/login.jsp=anon
+				/userlogin.jsp=anon
+				/index.jsp=authc
+				/userindex.jsp=authc
+				/console/**=authc
+			</value>
+		</property>
+	</bean>
+	<!-- securityManager 安全管理器 -->
+	<bean id="securityManager"
+		class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="userRealm" />
+	</bean>
+	<!-- realm -->
+	<bean id="userRealm" class="com.gezi.hdlw.shiro.CustomRealm">
+		<!-- 将凭证匹配器设置到 realm 中，realm 按照凭证匹配器的要求进行散列 -->
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
+	</bean>
+	<!-- 凭证匹配器 -->
+	<bean id="credentialsMatcher"
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="md5" />
+		<property name="hashIterations" value="1" />
+	</bean>
+</beans>

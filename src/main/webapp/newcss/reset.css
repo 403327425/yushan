@@ -1,0 +1,97 @@
+*{margin:0;padding:0;outline:none;}
+.container{ width:100%;height:36.5vw }
+.container img{ width:100%; }
+.content h1{text-align:center;}
+/*--清除浮动--*/
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+.hidden{
+	overflow: hidden;
+    text-overflow:ellipsis;
+    /* white-space: nowrap; */
+}
+.slow{
+	transition: all 0.4s ease 0s;
+	-webkit-transition: all 0.4s ease 0s;
+	-moz-transition: all 0.4s ease 0s;
+	-o-transition: all 0.4s ease 0s;
+}
+.flex{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	flex-flow: wrap;
+}
+.ds-flex{
+	display: flex;
+	width: 100%;
+	flex-flow: wrap;
+}
+.header{
+	width: 100%;
+}
+.center{
+	text-align: center;
+}
+.ovfl{
+	overflow: hidden;
+}
+.w_1608{
+	width: 83.75%;
+	margin: 0 auto;
+	max-width: 100%;
+}
+.w_1200{
+	width: 1200px;
+	margin: 0 auto;
+	max-width: 100%;
+}
+.w_1920{
+	width: 1920px;
+	margin: 0 auto;
+	max-width: 100%;
+}
+.w-100{
+	width: 100%;
+}
+.w-50{
+	width: 50%;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+ul{
+	font-size: 0;
+}
+ul li{
+	box-sizing: border-box;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #333333;
+}
+.block {
+	margin: 0 auto;
+}
+div{
+	box-sizing: border-box;
+}
+body{
+	position: relative;
+	width: 100%;
+	max-width: 750px;
+	color: #000;
+	line-height: 1.6;
+	font-family: "microsoft yahei",arial,helvetica,sans-serif;
+}
+body img{
+	display: block;
+	max-width: 100%;
+}
+input:focus{ outline:none;}
+input,button,select,textarea{ outline:none;border: none;}

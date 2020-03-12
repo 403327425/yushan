@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gezi.hdlw.dao.sys.LwSeqenceMapper">
+  <resultMap id="BaseResultMap" type="com.gezi.hdlw.vo.sys.LwSeqence">
+    <result column="seq_type"  property="seqType" />
+    <result column="description"  property="description" />
+    <result column="crt_value"  property="crtValue" />
+    <result column="len"  property="len" />
+    <result column="prefix"  property="prefix" />
+    <result column="bgcont"  property="bgcont" />
+  </resultMap>
+  <select id="getSeqByType" resultMap="BaseResultMap">
+       select * from lw_sequence where seq_type=#{seqType}
+  </select>
+  <update id="updateSeqByType" parameterType="LwSeqence">
+       update lw_sequence set crt_value=crt_value+1 where seq_type=#{seqType}
+  </update>
+  <update id="resetCrtvalue" >
+       update lw_sequence set crt_value=0 where seq_type=#{seqType}
+  </update>
+</mapper>

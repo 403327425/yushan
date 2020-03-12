@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gezi.hdlw.dao.sys.StudyDataMapper">
+  <resultMap id="BaseResultMap" type="com.gezi.hdlw.vo.sys.StudyData">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sd_type" jdbcType="VARCHAR" property="sdType" />
+    <result column="sd_name" jdbcType="VARCHAR" property="sdName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="sd_picture" jdbcType="VARCHAR" property="sdPicture" />
+    <result column="sd_hyperlinks" jdbcType="VARCHAR" property="sdHyperlinks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, sd_type, sd_name, start_time, sd_picture, sd_hyperlinks
+  </sql>
+  <select id="selectByExample" parameterType="com.gezi.hdlw.example.sys.StudyDataExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from study_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from study_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from study_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gezi.hdlw.example.sys.StudyDataExample">
+    delete from study_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gezi.hdlw.vo.sys.StudyData">
+    insert into study_data (id, sd_type, sd_name, 
+      start_time, sd_picture, sd_hyperlinks
+      )
+    values (#{id,jdbcType=INTEGER}, #{sdType,jdbcType=VARCHAR}, #{sdName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{sdPicture,jdbcType=VARCHAR}, #{sdHyperlinks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gezi.hdlw.vo.sys.StudyData">
+    insert into study_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sdType != null">
+        sd_type,
+      </if>
+      <if test="sdName != null">
+        sd_name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="sdPicture != null">
+        sd_picture,
+      </if>
+      <if test="sdHyperlinks != null">
+        sd_hyperlinks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sdType != null">
+        #{sdType,jdbcType=VARCHAR},
+      </if>
+      <if test="sdName != null">
+        #{sdName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sdPicture != null">
+        #{sdPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="sdHyperlinks != null">
+        #{sdHyperlinks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gezi.hdlw.example.sys.StudyDataExample" resultType="java.lang.Long">
+    select count(*) from study_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update study_data
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sdType != null">
+        sd_type = #{record.sdType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sdName != null">
+        sd_name = #{record.sdName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null">
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sdPicture != null">
+        sd_picture = #{record.sdPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sdHyperlinks != null">
+        sd_hyperlinks = #{record.sdHyperlinks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update study_data
+    set id = #{record.id,jdbcType=INTEGER},
+      sd_type = #{record.sdType,jdbcType=VARCHAR},
+      sd_name = #{record.sdName,jdbcType=VARCHAR},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      sd_picture = #{record.sdPicture,jdbcType=VARCHAR},
+      sd_hyperlinks = #{record.sdHyperlinks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gezi.hdlw.vo.sys.StudyData">
+    update study_data
+    <set>
+      <if test="sdType != null">
+        sd_type = #{sdType,jdbcType=VARCHAR},
+      </if>
+      <if test="sdName != null">
+        sd_name = #{sdName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sdPicture != null">
+        sd_picture = #{sdPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="sdHyperlinks != null">
+        sd_hyperlinks = #{sdHyperlinks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gezi.hdlw.vo.sys.StudyData">
+    update study_data
+    set sd_type = #{sdType,jdbcType=VARCHAR},
+      sd_name = #{sdName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      sd_picture = #{sdPicture,jdbcType=VARCHAR},
+      sd_hyperlinks = #{sdHyperlinks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

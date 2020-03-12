@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
+
+	<!-- 加载数据信息配置文件 -->
+	<context:property-placeholder
+		location="classpath:dbcp.properties" />
+
+	<!-- 加入注解扫描器 -->
+	<context:component-scan
+		base-package="com.gezi.hdlw" annotation-config="true">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 配置数据源 DBCP连接池 -->
+	<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+
+	<!-- 配置事务管理器类 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"></property>
+	</bean>
+
+	<!-- 配置 mybatis SqlSessionFactory -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<property name="mapperLocations"
+			value="classpath*:com/gezi/hdlw/mapper/*/*Mapper.xml"></property>
+		<property name="typeAliasesPackage" value="com.gezi.hdlw.vo" />
+		<property name="configLocation" value="classpath:SqlMapConfig.xml"></property>
+	</bean>
+
+	<!-- 配置mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径 -->
+		<property name="basePackage" value="com.gezi.hdlw.dao"></property>
+		<property name="SqlSessionFactoryBeanName"
+			value="sqlSessionFactory"></property>
+	</bean>
+	<!-- 注解方式配置事务 -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+</beans>

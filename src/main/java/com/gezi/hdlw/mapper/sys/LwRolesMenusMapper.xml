@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gezi.hdlw.dao.sys.LwRolesMenusMapper">
+	<!-- 角色一对多菜单结果 -->
+	<resultMap id="customizationResultMap"
+		type="com.gezi.hdlw.vo.sys.LwRoles">
+		<id column="role_id" jdbcType="BIGINT" property="roleId" />
+		<result column="role_name" jdbcType="VARCHAR"
+			property="roleName" />
+		<result column="role_remark" jdbcType="VARCHAR"
+			property="roleRemark" />
+		<collection property="lwMenuList"
+			ofType="com.gezi.hdlw.vo.sys.LwMenus"
+			resultMap="com.gezi.hdlw.dao.sys.LwMenusMapper.BaseResultMap" />
+	</resultMap>
+	<!-- 菜单一对多角色结果 -->
+	<resultMap id="customizationResultForMenuMap"
+		type="com.gezi.hdlw.vo.sys.LwMenus">
+		<id column="menu_id" jdbcType="BIGINT" property="menuId" />
+	    <result column="title" jdbcType="VARCHAR" property="title" />
+	    <result column="icon" jdbcType="VARCHAR" property="icon" />
+	    <result column="href" jdbcType="VARCHAR" property="href" />
+	    <result column="perms" jdbcType="VARCHAR" property="perms" />
+	    <result column="spread" jdbcType="VARCHAR" property="spread" />
+	    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+	    <result column="sorting" jdbcType="BIGINT" property="sorting" />
+		<collection property="lwRolesList"
+			ofType="com.gezi.hdlw.vo.sys.LwRoles"
+			resultMap="com.gezi.hdlw.dao.sys.LwRolesMapper.BaseResultMap" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">menu_id,role_id</sql>
+	<!-- 定制联表查询字段 -->
+	<sql id="Customization_Column_List">
+		lw_roles.role_id,lw_roles.role_name,lw_roles.role_remark,
+		lw_menus.menu_id,lw_menus.title,lw_menus.icon,lw_menus.href,lw_menus.perms,lw_menus.spread,lw_menus.parent_id,lw_menus.sorting
+	</sql>
+	<!-- 定制联接表 -->
+	<sql id="Customization_Join_Table">
+		lw_roles_menus
+		JOIN lw_roles ON
+		(lw_roles_menus.role_id=lw_roles.role_id)
+		JOIN lw_menus ON
+		(lw_roles_menus.menu_id=lw_menus.menu_id)
+	</sql>
+	<delete id="deleteByPrimaryKey"
+		parameterType="com.gezi.hdlw.vo.sys.LwRolesMenusKey">
+		delete from lw_roles_menus
+		where menu_id =
+		#{menuId,jdbcType=BIGINT}
+		and role_id = #{roleId,jdbcType=BIGINT}
+	</delete>
+
+	<!-- 批量删除 -->
+	<delete id="deleteBatchByPrimaryKey"
+		parameterType="java.util.List">
+		DELETE FROM lw_roles_menus
+		WHERE
+		<foreach collection="list" item="item" index="index"
+			separator="or">
+			( menu_id=#{item.menu.menuId}
+			AND role_id=#{item.role.roleId} )
+		</foreach>
+	</delete>
+	<insert id="insert"
+		parameterType="com.gezi.hdlw.vo.sys.LwRolesMenusKey">
+		insert into lw_roles_menus (menu_id, role_id)
+		values
+		(#{menuId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT})
+	</insert>
+
+	<!-- 批量插入 -->
+	<insert id="insertBatch" parameterType="java.util.List">
+		insert into lw_roles_menus
+		(
+		<include refid="Base_Column_List" />
+		)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.menu.menuId,jdbcType=BIGINT},
+			#{item.role.roleId,jdbcType=BIGINT}
+			)
+		</foreach>
+	</insert>
+
+	<select id="selectByExample" parameterType="java.lang.Long"
+		resultMap="customizationResultMap">
+		select
+		<include refid="Customization_Column_List" />
+		from
+		<include refid="Customization_Join_Table" />
+		where lw_roles_menus.role_id = #{roleId,jdbcType=BIGINT}
+	</select>
+	
+	<select id="selectByMenuId" parameterType="java.lang.Long"
+		resultMap="customizationResultForMenuMap">
+		select
+		<include refid="Customization_Column_List" />
+		from
+		<include refid="Customization_Join_Table" />
+		where lw_menus.menu_id = #{menuId,jdbcType=BIGINT}
+	</select>
+</mapper>
